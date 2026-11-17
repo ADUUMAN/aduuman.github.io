@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ADUUMAN — Surveying &amp; Earthwork Toolkit: cut/fill volumes, sections, DXF</title>
+<meta name="description" content="ADUUMAN is a surveying and earthwork toolkit: cut and fill volumes between surfaces, cross-sections with DXF sheets, batch project scanning and monthly progress reports. Early access by request.">
+<meta name="author" content="Asgar Rahimi">
+<link rel="canonical" href="https://aduuman.github.io/">
+<link rel="alternate" hreflang="en" href="https://aduuman.github.io/">
+<link rel="alternate" hreflang="fa" href="https://aduuman.github.io/fa/">
+<link rel="alternate" hreflang="x-default" href="https://aduuman.github.io/">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%2314302B'/%3E%3Cpath d='M6 44C18 30 30 50 42 38S54 26 60 30' fill='none' stroke='%23D9531E' stroke-width='5' stroke-linecap='round'/%3E%3C/svg%3E">
+<meta name="theme-color" content="#F1F3EE" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0F1D1A" media="(prefers-color-scheme: dark)">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="ADUUMAN">
+<meta property="og:title" content="ADUUMAN — Surveying &amp; Earthwork Toolkit">
+<meta property="og:description" content="Cut/fill volumes, cross-sections with DXF sheets, batch project scanning and progress reports.">
+<meta property="og:url" content="https://aduuman.github.io/">
+<meta property="og:image" content="https://aduuman.github.io/og-image.png">
+<meta property="og:locale" content="en_US">
+<meta property="og:locale:alternate" content="fa_IR">
+<meta name="twitter:card" content="summary_large_image">
+<!-- Google Search Console verification tag goes here later:
+<meta name="google-site-verification" content="CODE"> -->
+<script type="application/ld+json">
+{"@context":"https://schema.org","@graph":[
+{"@type":"WebSite","@id":"https://aduuman.github.io/#site","name":"ADUUMAN","alternateName":"ADUUMAN Toolkit","url":"https://aduuman.github.io/","inLanguage":["en","fa"]},
+{"@type":"SoftwareApplication","name":"ADUUMAN Toolkit","applicationCategory":"EngineeringApplication","operatingSystem":"Windows","description":"Surveying and earthwork toolkit: cut and fill volumes between surfaces, cross-sections with DXF sheets, batch project scanning and progress reports.","inLanguage":["en","fa"],"author":{"@id":"https://aduuman.github.io/#author"}},
+{"@type":"Person","@id":"https://aduuman.github.io/#author","name":"Asgar Rahimi","jobTitle":"Surveyor","knowsAbout":["Surveying","Earthwork volume calculation","Civil 3D","UAV photogrammetry","DEM processing","Python","AutoLISP"]}]}
+</script>
+<style>
+:root{--bg:#F1F3EE;--card:#FAFBF8;--ink:#14302B;--mute:#566A64;--line:#C7D1CA;--acc:#D9531E;--accink:#fff}
+@media (prefers-color-scheme:dark){:root{--bg:#0F1D1A;--card:#14262A;--ink:#E6EFEA;--mute:#93A8A1;--line:#2A423C;--acc:#F27A48;--accink:#0F1D1A}}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.7 Georgia,"Times New Roman",serif;position:relative;overflow-x:hidden}
+svg.bg{position:absolute;inset:0 0 auto 0;width:100%;height:720px;opacity:.55;pointer-events:none}
+svg.bg path{fill:none;stroke:var(--line);stroke-width:1}
+a{color:var(--acc)}
+a:focus-visible,.btn:focus-visible{outline:3px solid var(--acc);outline-offset:3px}
+.skip{position:absolute;left:-999px;top:8px;background:var(--acc);color:var(--accink);padding:8px 14px;z-index:9}
+.skip:focus{left:8px}
+.wrap{position:relative;max-width:980px;margin:0 auto;padding:0 22px}
+nav{display:flex;flex-wrap:wrap;gap:6px 22px;align-items:center;padding:22px 0;font:15px Tahoma,"Segoe UI",sans-serif}
+nav b{font:700 18px Georgia,serif;letter-spacing:.08em;margin-right:auto}
+nav a{color:var(--mute);text-decoration:none}nav a:hover{color:var(--acc)}
+header.hero{padding:70px 0 54px;max-width:700px}
+.mark{width:56px;height:4px;background:var(--acc);margin:0 0 26px}
+h1{font-size:clamp(44px,12vw,84px);letter-spacing:.04em;line-height:1.05;margin:0 0 8px}
+.sub{font-size:21px;color:var(--acc);margin:0 0 22px}
+.lead{max-width:58ch;margin:0 0 26px}
+.btn{display:inline-block;background:var(--acc);color:var(--accink);padding:12px 24px;border-radius:6px;text-decoration:none;font:600 16px Tahoma,"Segoe UI",sans-serif}
+.btn.ghost{background:none;color:var(--ink);border:1px solid var(--line);margin-left:8px}
+.badge{display:inline-block;font:13px Tahoma,sans-serif;color:var(--mute);border:1px solid var(--line);border-radius:20px;padding:3px 12px;margin-bottom:18px}
+section{padding:44px 0;border-top:1px solid var(--line)}
+h2{font-size:28px;margin:0 0 20px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:16px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:20px}
+.card h3{margin:0 0 6px;font-size:19px}.card p{margin:0;color:var(--mute);font-size:16px;line-height:1.6}
+ol.steps{margin:0;padding:0;list-style:none;counter-reset:s;display:grid;gap:14px}
+ol.steps li{counter-increment:s;padding-left:54px;position:relative}
+ol.steps li::before{content:counter(s);position:absolute;left:0;top:0;width:38px;height:38px;border:2px solid var(--acc);border-radius:50%;text-align:center;line-height:34px;color:var(--acc);font:700 17px Tahoma,sans-serif}
+.chips{display:flex;flex-wrap:wrap;gap:8px;padding:0;margin:16px 0 0;list-style:none}
+.chips li{font:14px Tahoma,"Segoe UI",sans-serif;border:1px solid var(--line);border-radius:20px;padding:4px 13px;background:var(--card)}
+.muted{color:var(--mute)}
+footer{border-top:1px solid var(--line);padding:22px 0 30px;color:var(--mute);font:14px Tahoma,sans-serif;text-align:center}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<svg class="bg" viewBox="0 0 800 600" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+<path d="M-20 420C120 340 220 470 360 400S560 280 820 360"/><path d="M-20 460C130 390 230 510 370 445S570 330 820 405"/><path d="M-20 500C140 440 240 550 380 490S580 380 820 450"/><path d="M-20 300C100 240 200 330 330 280S560 170 820 250"/><path d="M-20 340C110 285 210 370 340 322S570 215 820 292"/>
+</svg>
+<div class="wrap">
+<nav aria-label="Main"><b>ADUUMAN</b><a href="#features">Features</a><a href="#workflow">Workflow</a><a href="#author">Author</a><a href="#contact">Contact</a><a href="/fa/" hreflang="fa" lang="fa">فارسی</a></nav>
+<main id="main">
+<header class="hero">
+<div class="mark"></div>
+<span class="badge">Early access by request</span>
+<h1>ADUUMAN</h1>
+<p class="sub">Surveying &amp; Earthwork Toolkit</p>
+<p class="lead">From survey surfaces to monthly progress volumes: cut and fill, cross-sections, DXF sheets and reports, built by a working surveyor for road, tunnel and bridge projects.</p>
+<a class="btn" href="mailto:asgarrahimi.rs@gmail.com?subject=ADUUMAN%20early%20access">Request early access</a><a class="btn ghost" href="#features">See what it does</a>
+</header>
+
+<section id="features"><h2>What it does</h2>
+<div class="grid">
+<div class="card"><h3>Cut &amp; fill volumes</h3><p>Compare design, previous and current surfaces from LandXML or GeoTIFF DEMs and get cut and fill volumes along the alignment.</p></div>
+<div class="card"><h3>Cross-sections &amp; DXF</h3><p>Sections at any station step with profiles, cut/fill areas, offset and height tables, and slope labels, exported as DXF ready for AutoCAD.</p></div>
+<div class="card"><h3>Batch project scanning</h3><p>Point it at your folders: it detects surfaces, alignments, dates and roles, proposes projects and runs them all in one go.</p></div>
+<div class="card"><h3>Largest-change sections</h3><p>One merged DXF for all projects, with the sections that changed the most framed and ranked so you review them first.</p></div>
+<div class="card"><h3>Reports &amp; summaries</h3><p>HTML and PDF reports, one-page summaries, charts, maps and key sections for monthly progress submissions.</p></div>
+<div class="card"><h3>Persian &amp; English</h3><p>Interface and reports in both languages, with quality checks on the input data before volumes are trusted.</p></div>
+</div></section>
+
+<section id="workflow"><h2>How it works</h2>
+<ol class="steps">
+<li><b>Scan.</b> Choose the folders with your surfaces and alignments.</li>
+<li><b>Review.</b> The toolkit proposes projects and flags anything uncertain for you to confirm.</li>
+<li><b>Run.</b> Volumes, sections and reports are produced for every project.</li>
+<li><b>Deliver.</b> Open the merged DXF and the reports, starting from the sections with the biggest change.</li>
+</ol></section>
+
+<section id="author"><h2>Built by a surveyor</h2>
+<p><b>Asgar Rahimi</b>, B.Sc. in Geomatics (Surveying) Engineering. Experience in road construction, tunnel, bridge and close-range photogrammetry projects, including an international border project. Daily work with Civil 3D, DEM generation and monthly progress volumes, which is the workflow ADUUMAN automates.</p>
+<ul class="chips" aria-label="Skills"><li>UAV &amp; close-range photogrammetry</li><li>Civil 3D</li><li>Agisoft Metashape</li><li>DEM &amp; volume calculation</li><li>Python</li><li>AutoLISP</li><li>AutoCAD</li><li>Laser scan &amp; ReCap</li></ul>
+<p class="muted">English and Russian conversational, Persian native.</p></section>
+
+<section id="contact"><h2>Contact</h2>
+<p>The full toolkit is being finalized. For early access, a demo on your own data, or questions, write to <a href="mailto:asgarrahimi.rs@gmail.com">asgarrahimi.rs@gmail.com</a>.</p></section>
+</main>
+<footer>© 2026 ADUUMAN Toolkit · <a href="/fa/" hreflang="fa" lang="fa">فارسی</a></footer>
+</div>
+</body>
+</html>
